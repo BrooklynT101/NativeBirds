@@ -24,7 +24,10 @@ function createBirdCard(bird) {
     const card = document.createElement('div');
     card.className = 'bird_card';
     card.innerHTML = `
-        <img src="${bird.photo.source}" alt="${bird.english_name}">
+        <img src="${bird.photo.source}" alt="${bird.common_name}">
+        <h3>${bird.original_name} \n(${bird.common_name})</h3>
+        <p class="status ${bird.status.toUpperCase()}">${bird.status}</p>
+        <p class="credit">Photo by: ${bird.photo.credit}</p>
     `;
     return card;
 }

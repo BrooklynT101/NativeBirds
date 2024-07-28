@@ -24,7 +24,8 @@ main {
 }
 
 .bird_card img {
-scale: 100%;
+    width: 100%;
+    height: auto;
 }
 
 .bird_card name {
