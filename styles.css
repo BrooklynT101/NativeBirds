@@ -6,20 +6,26 @@ body {
 }
 
 header {
-    background-color:darkslategrey;
+    background-color: darkslategrey;
     color: azure;
     text-align: center;
-    padding: 0;
-}
-main {
-
+    padding: 1em 0;
 }
 
 .grid_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
 
 }
 
 .bird_card {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 
 }
 
@@ -28,17 +34,68 @@ main {
     height: auto;
 }
 
-.bird_card name {
+.bird_card h3 {
+    font-size: 1.5em;
+    font-size: 0.9em;
+    color: #555;
 }
 
-.bird_card nameMaori {
-    
+.bird_card .credit {
+    font-size: 0.9em;
+    color: #555;
 }
 
-.bird_card credit {
-    
+.bird_card .status {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-top: 0.5em;
 }
 
-.bird_card level {
-    
+
+
+
+.not-threatened {
+    background-color: #02a028;
+}
+
+.naturally-uncommon {
+    background-color: #649a31;
+}
+
+.relict {
+    background-color: #99cb68
+}
+
+.recovering {
+    background-color: #fecc33
+}
+
+.declining {
+    background-color: #fe9a01
+}
+
+.nationally-increasing {
+    background-color: #c26967
+}
+
+.nationally-vulnerable {
+    background-color: #9b0000
+}
+
+.nationally-endangered {
+    background-color: #660032
+}
+
+.nationally-critical {
+    background-color: #320033
+}
+
+.extinct {
+    background-color: black
+}
+
+.data_Deficient {
+    background-color: black
 }

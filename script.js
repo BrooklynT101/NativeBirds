@@ -1,10 +1,12 @@
+const beans = d
+
 async function fetchData() {
     try {
-        const response = await fetch('https://website.com/file.json');
+        const response = await fetch('data/nzbird.json');
         if (!response.ok) {
-            throw new console.error(response.status); // error handling
+            throw console.error(response.status); // error handling
         }
-        const data = response.json()  // parse to JSON
+        const data = await response.json()  // parse to JSON
         console.log(data); // use the data
         displayCards(data)
     } catch (error) {
@@ -30,6 +32,10 @@ function createBirdCard(bird) {
         <p class="credit">Photo by: ${bird.photo.credit}</p>
     `;
     return card;
+}
+
+function sortByAttribute() {
+
 }
 
 //call fetch data function when the page loads
