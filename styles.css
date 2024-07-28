@@ -24,11 +24,10 @@ main {
 }
 
 .bird_card img {
-
+scale: 100%;
 }
 
 .bird_card name {
-
 }
 
 .bird_card nameMaori {
