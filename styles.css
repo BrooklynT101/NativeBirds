@@ -12,6 +12,15 @@ header {
     padding: 1em 0;
 }
 
+footer {
+    background-color: darkslategrey;
+    color: azure;
+    height: 3em;
+    text-align: center;
+    font-size: small;
+    padding: 1em 0;
+}
+
 .container {
     display: flex;
     flex: 1;
