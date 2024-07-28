@@ -12,6 +12,17 @@ header {
     padding: 1em 0;
 }
 
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    background-color: #649a31;
+    padding: 1em;
+    width: 200px;
+}
+
 .grid_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

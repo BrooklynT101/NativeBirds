@@ -9,24 +9,30 @@
 </head>
 
 <body>
+
     <header>
         <h1>Native Birds of New Zealand</h1>
         <p>Discover our unique avian species of Aotearoa</p>
     </header>
 
-    <div id="bird_grid" class="grid_container"></div>
-        
+    <div class="container">
+        <aside class="sidebar">
+            <input id="search" type="text" placeholder="Search" aria-label="Search" onkeyup="searchBirds()">
+            <button onclick="sortBy('name')">Sort by Name</button>
+            <button onclick="sortBy('status')">Sort by Status</button>
+        </aside>
+
+        <main>
+            <div id="bird_grid" class="grid_container"></div>
+        </main>
+    </div>
+
     <script src="script.js"></script>
 
+    <footer>
+        Credit: https://www.birdsnz.org.nz/
+    </footer>
 
-    <nav>
-        <div id="search_input">
-            <input id="search" type="text" placeholder="Search" aria-label="Search">
-        </div>
-    </nav>
-<footer>Credit: https://www.birdsnz.org.nz/</footer>
-    <!-- function funcName(param) { return param };
-    const funcName = (param) => { return param }; -->
 </body>
 
 </html>
