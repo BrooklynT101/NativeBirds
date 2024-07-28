@@ -1,5 +1,3 @@
-const beans = d
-
 async function fetchData() {
     try {
         const response = await fetch('data/nzbird.json');
