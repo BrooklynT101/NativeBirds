@@ -24,11 +24,24 @@ function displayCards(birds) {
 }
 
 function createBirdCard(bird) {
+    // creating the card and naming it 
     const card = document.createElement('div');
     card.className = 'bird_card';
+
+    //checking if there is an original name assc to the bird
+    //creating variable for the display
+    let nameDisplay;
+    if (bird.original_name) {
+        nameDisplay = `${bird.original_name}<br>(${bird.common_name})`;
+    } else {
+        nameDisplay = bird.common_name;
+    }
+
+
+    // inserting the values into the card from the data
     card.innerHTML = `
         <img src="${bird.photo.source}" alt="${bird.common_name}">
-        <h3>${bird.original_name} \n(${bird.common_name})</h3>
+        <h3>${nameDisplay}</h3>
         <p class="status ${bird.status.toUpperCase()}">${bird.status}</p>
         <p class="credit">Photo by: ${bird.photo.credit}</p>
     `;
@@ -36,21 +49,25 @@ function createBirdCard(bird) {
 }
 
 function sortBy(metric) {
-    if (sort[metric]) {
-        sortActions[metric];
+    if (sortActions[metric]) {
+        sortActions[metric]();
     } else {
-        console.error("Sorting function doesn't exist!")
+        console.error("Sorting function doesn't exist!");
     }
-    console.fetchData
 }
 
 const sortActions = {
     name() {
-        console.log("Hello World!");
+        console.error("Function has not been implemented...yet");
+    },
+
+
+    status() {
+        console.error("Function has not been implemented...yet");
     },
 
     weight() {
-        console.log("Goodbye World!");
+        console.error("Function has not been implemented...yet");
     }
 };
 
