@@ -1,3 +1,5 @@
+let birdData = []
+
 async function fetchData() {
     try {
         const response = await fetch('data/nzbird.json');
@@ -5,8 +7,9 @@ async function fetchData() {
             throw console.error(response.status); // error handling
         }
         const data = await response.json()  // parse to JSON
-        console.log(data); // use the data
-        displayCards(data)
+        birdData = data;
+        console.log(birdData); // use the data
+        displayCards(birdData)
     } catch (error) {
         console.error('Could not fetch JSON data, error:', error)
     }
@@ -32,9 +35,34 @@ function createBirdCard(bird) {
     return card;
 }
 
-function sortByAttribute() {
-
+function sortBy(metric) {
+    if (sort[metric]) {
+        sortActions[metric];
+    } else {
+        console.error("Sorting function doesn't exist!")
+    }
+    console.fetchData
 }
+
+const sortActions = {
+    name() {
+        console.log("Hello World!");
+    },
+
+    weight() {
+        console.log("Goodbye World!");
+    }
+};
+
+// const actions = {
+//     greeting() {
+//         console.log("Hello World!");
+//     },
+
+//     farewell() {
+//         console.log("Goodbye World!");
+//     }
+// };
 
 //call fetch data function when the page loads
 window.onload = fetchData;
