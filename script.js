@@ -48,6 +48,26 @@ function createBirdCard(bird) {
     return card;
 }
 
+function searchBirds() {
+    const searchInput = document.getElementById('search');
+    const query = searchInput.value.toLowerCase(); // get value and convert to lowercase for case-insensitive search
+
+    const filteredBirds = birdData.filter(bird =>
+        //check the original/common/other names of each bird against the query to see if it matchs
+        //normalizes the string to account for diacritics and converts each to lower case for case insensitive searching
+        bird.original_name.normalize("NFC").toLowerCase().includes(query) || //check 
+        bird.common_name.normalize("NFC").toLowerCase().includes(query) 
+        // bird.other_name.normalize("NFC").toLowerCase().includes(query)
+    );
+
+    //get and clear current display else it doubles
+    const gridContainer = document.getElementById('bird_grid');
+    gridContainer.innerHTML = '';
+
+    //send filtered results to display function
+    displayCards(filteredBirds);
+}
+
 function sortBy(metric) {
     if (sortActions[metric]) {
         sortActions[metric]();
