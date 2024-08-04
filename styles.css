@@ -41,8 +41,10 @@ footer {
 }
 
 .bird_card {
-    border: 1px solid #000000;
-    border-radius: 8px;
+    display: flexbox;
+    flex-flow: column;
+    border: 2px solid #000000;
+    border-radius: 16px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -51,8 +53,10 @@ footer {
 }
 
 .bird_card img {
-    width: 100%;
-    height: auto;
+    border: 1px solid #000000;
+    border-radius: 16px;
+    width: 99%;
+    height: 50%;
 }
 
 .bird_card h3 {

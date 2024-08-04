@@ -99,12 +99,15 @@ const sortActions = {
         console.error("Function has not been implemented...yet");
     },
 
-
     status() {
         console.error("Function has not been implemented...yet");
     },
 
     weight() {
+        console.error("Function has not been implemented...yet");
+    },
+
+    length() {
         console.error("Function has not been implemented...yet");
     }
 };
