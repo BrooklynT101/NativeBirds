@@ -50,15 +50,28 @@ function createBirdCard(bird) {
 
 function searchBirds() {
     const searchInput = document.getElementById('search');
-    const query = searchInput.value.toLowerCase(); // get value and convert to lowercase for case-insensitive search
+    const query = removeDiacritics(searchInput.value.toLowerCase()); // get query and convert to lowercase for case-insensitive search
 
-    const filteredBirds = birdData.filter(bird =>
-        //check the original/common/other names of each bird against the query to see if it matchs
-        //normalizes the string to account for diacritics and converts each to lower case for case insensitive searching
-        bird.original_name.normalize("NFC").toLowerCase().includes(query) || //check 
-        bird.common_name.normalize("NFC").toLowerCase().includes(query) 
-        // bird.other_name.normalize("NFC").toLowerCase().includes(query)
-    );
+    //loop through the birds in the data, only adding those that match the search
+    const filteredBirds = birdData.filter(bird => {
+        //format the original and common name for case insensitivity and diacritic removal
+        const orgName = removeDiacritics(bird.original_name.toLowerCase());
+        const comName = removeDiacritics(bird.common_name.toLowerCase());
+
+        //loop through the other names to find a match, assigning a check variable for truthy/falsey returns
+        const otherNameCheck = bird.other_name.find(name =>
+            removeDiacritics(name.toLowerCase()).includes(query)
+        );
+
+        //checks names against query and returns a true or false/falsey value
+        return orgName.includes(query) || comName.includes(query) || otherNameCheck !== undefined;
+        // //check the original/common/other names of each bird against the query to see if it matchs
+        // // removes diatcritics for search then converts each to lower case for case insensitive searching
+        // removeDiacritics(bird.original_name.normalize("NFD").toLowerCase()).includes(query) || //check 
+        // removeDiacritics(bird.common_name.normalize("NFD").toLowerCase()).includes(query)
+
+        // // bird.other_name.normalize("NFC").toLowerCase().includes(query)
+    });
 
     //get and clear current display else it doubles
     const gridContainer = document.getElementById('bird_grid');
@@ -66,6 +79,11 @@ function searchBirds() {
 
     //send filtered results to display function
     displayCards(filteredBirds);
+}
+
+// Function to remove diacritics with normilisation factor NFD and replacing the accent with nothing
+function removeDiacritics(name) {
+    return name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function sortBy(metric) {
