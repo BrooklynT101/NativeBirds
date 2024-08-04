@@ -16,7 +16,13 @@ async function fetchData() {
 }
 
 function displayCards(birds) {
+    // get dom
     const gridContainer = document.getElementById('bird_grid');
+
+    //clear current display
+    gridContainer.innerHTML = '';
+
+    //add birds
     birds.forEach(bird => {
         const birdCard = createBirdCard(bird);
         gridContainer.appendChild(birdCard);
@@ -73,10 +79,6 @@ function searchBirds() {
         // // bird.other_name.normalize("NFC").toLowerCase().includes(query)
     });
 
-    //get and clear current display else it doubles
-    const gridContainer = document.getElementById('bird_grid');
-    gridContainer.innerHTML = '';
-
     //send filtered results to display function
     displayCards(filteredBirds);
 }
@@ -87,30 +89,74 @@ function removeDiacritics(name) {
 }
 
 function sortBy(metric) {
-    if (sortActions[metric]) {
-        sortActions[metric]();
-    } else {
+    //if the action doesnt exist it should create an error and return
+    if (!sortActions[metric]) {
         console.error("Sorting function doesn't exist!");
+        return;
     }
+
+    //sort bird data based off of specified sorting metric (e.g., weight or status)
+    birdData.sort(sortActions[metric]);
+
+    displayCards(birdData);
 }
 
 const sortActions = {
-    name() {
-        console.error("Function has not been implemented...yet");
+    //function to sort the bird by name, used common name as not all bird had a Maori eqv
+    name(a, b) {
+        return a.common_name.localeCompare(b.common_name);
+        // console.error("Function has not been implemented...yet");
     },
 
-    status() {
-        console.error("Function has not been implemented...yet");
+    //function to sort by status, defining by a status ranking system of endangerment 
+    status(a, b) {
+        //get the ranks to compare
+        const rankA = getStatusRank(a.status);
+        const rankB = getStatusRank(b.status);
+
+        //compare ranks to determine the order
+        return rankA - rankB;
+        // console.error("Function has not been implemented...yet");
     },
 
-    weight() {
-        console.error("Function has not been implemented...yet");
+    weight(a, b) {
+        //get the weights to compare
+        const weightA = parseInt(a.weight, 10);
+        const weightB = parseInt(b.weight, 10);
+
+        //compare weights to determine the order
+        return weightA - weightB;
+        // console.error("Function has not been implemented...yet");
     },
 
-    length() {
-        console.error("Function has not been implemented...yet");
+    length(a, b) {
+        //get the lengths to compare
+        const lengthA = parseInt(a.length, 10);
+        const lengthB = parseInt(b.length, 10);
+
+        //compare lengths to determine the order
+        return lengthA - lengthB;
+        // console.error("Function has not been implemented...yet");
     }
 };
+
+//function to define and return the rank of a given status, from least to most critical
+function getStatusRank(status) {
+    const statusOrder = [
+        "Not Threatened",
+        "Naturally Uncommon",
+        "Relict",
+        "Recovering",
+        "Declining",
+        "Nationally Increasing",
+        "Nationally Vulnerable",
+        "Nationally Endangered",
+        "Nationally Critical",
+        "Extinct",
+        "Data Deficient"
+    ];
+    return statusOrder.indexOf(status);
+}
 
 // const actions = {
 //     greeting() {
