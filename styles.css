@@ -53,6 +53,21 @@ footer {
 
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.credit-overlay {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color: rgba(50, 50, 50, 0.7); /* semi-trans parent grey*/
+    color: #f0f0f0; /*soft white text*/
+    padding: 5px;
+    font-size: 50%;
+    border-top-left-radius: 5px;
+}
 .bird_card img {
     border: 1px solid #000000;
     border-radius: 16px;

@@ -63,14 +63,16 @@ function createBirdCard(bird) {
 
     // inserting the values into the card from the data
     card.innerHTML = `
-        <img src="${bird.photo.source}" alt="${bird.common_name}">
+        <div class="image-container">   
+            <img src="${bird.photo.source}" alt="${bird.common_name}">
+            <div class="credit-overlay">Credit: ${bird.photo.credit}</div>
+        </div>
         <h3>${nameDisplay}</h3>
         <div class="status-bar" style="background-color: ${statusColor};"></div>
         <p>Order: ${bird.order}</p>
         <p>Family: ${bird.family}</p>
         <p class="size-info">Average Length: ${bird.length}</p>
         <p class="size-info">Average Weight: ${bird.weight}</p> 
-        <p class="credit">Photo by: ${bird.photo.credit}</p>
     `;
     return card;
 }
