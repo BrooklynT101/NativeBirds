@@ -42,7 +42,11 @@ function createBirdCard(bird) {
     } else {
         nameDisplay = bird.common_name;
     }
-
+    // Status bar
+    const statusBar = document.createElement('div');
+    statusBar.classList.add('status-bar');
+    statusBar.style.backgroundColor = statusColors[bird.status] || 'gray'; // Default to gray if status is not found
+    card.appendChild(statusBar);
 
     // inserting the values into the card from the data
     card.innerHTML = `

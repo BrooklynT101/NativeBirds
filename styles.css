@@ -78,8 +78,36 @@ footer {
     margin-top: 0.5em;
 }
 
+.legend {
+    background-color: wheat;
+    width: 105%;
+}
 
+.title {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+}
 
+.status-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1px 0;
+}
+
+.status-text {
+    flex: 1;
+    font-size: small;
+    text-align: left;
+}
+
+.status-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+    padding-right: 15px;
+}
 
 .not-threatened {
     background-color: #02a028;
