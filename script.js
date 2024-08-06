@@ -105,8 +105,9 @@ function removeDiacritics(name) {
     return name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function sortBy(metric) {
-    //if the action doesnt exist it should create an error and return
+function sortBy() {
+    const metric = document.getElementById("sortByBox").value;
+    //if the action doesnt exist it should log an error and return
     if (!sortActions[metric]) {
         console.error("Sorting function doesn't exist!");
         return;
@@ -171,6 +172,7 @@ function getStatusRank(status) {
     return statusOrder.indexOf(status);
 }
 
+// function to create the interactive legend
 function createLegend() {
     const legendContainer = document.getElementById('status-legend');
     legendContainer.innerHTML = ''; //clear existing content first
