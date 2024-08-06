@@ -186,13 +186,9 @@ function createLegend() {
         //inserting html
         legendElement.innerHTML = `
         <p class="status-label">${status}</p>
-        <div class="color-box" style="background-color: ${color}; cursor: pointer;" onclick="filterByStatus('${status}')"></div>
+        <div class="color-box" style="background-color: ${color}"; cursor: "pointer"; title="Click to apply filter" onclick="filterByStatus('${status}')"; ></div>
         `
-
-        //adding click event listener to color box
-        // const colorBox = legendElement.querySelector('.color-box');
-        // colorBox.addEventListener('click')
-
+        //adding legend to the legend box
         legendContainer.appendChild(legendElement);
     }
 }
