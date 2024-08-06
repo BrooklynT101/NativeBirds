@@ -177,18 +177,31 @@ function createLegend() {
     const legendContainer = document.getElementById('status-legend');
     legendContainer.innerHTML = ''; //clear existing content first
 
+    //loop over every color
     for (const status in statusColors) {
         const color = statusColors[status];
         const legendElement = document.createElement('div');
         legendElement.classList.add('legend-element');
 
+        //inserting html
         legendElement.innerHTML = `
         <p class="status-label">${status}</p>
-        <div class="color-box" style="background-color: ${color};"></div>
+        <div class="color-box" style="background-color: ${color}; cursor: pointer;" onclick="filterByStatus('${status}')"></div>
         `
+
+        //adding click event listener to color box
+        // const colorBox = legendElement.querySelector('.color-box');
+        // colorBox.addEventListener('click')
+
         legendContainer.appendChild(legendElement);
     }
 }
 
-//call fetch data function when the page loads
+// function to filter the bird by status
+function filterByStatus(status) {
+    const filteredBirds = birdData.filter(bird => bird.status === status);
+    displayCards(filteredBirds);
+}
+
+//call fetchData and createLegend functions when the page loads
 window.onload = fetchData(), createLegend();

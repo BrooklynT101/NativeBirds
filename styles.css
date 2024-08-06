@@ -50,7 +50,6 @@ footer {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     min-width: 33.3%;
-
 }
 
 .image-container {
@@ -68,6 +67,7 @@ footer {
     font-size: 50%;
     border-top-left-radius: 5px;
 }
+
 .bird_card img {
     border: 1px solid #000000;
     border-radius: 16px;
