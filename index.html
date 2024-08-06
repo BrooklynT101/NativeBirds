@@ -23,53 +23,7 @@
             <button onclick="sortBy('status')">Sort by Status</button>
             <button onclick="sortBy('weight')">Sort by Weight</button>
             <button onclick="sortBy('length')">Sort by Length</button>
-            <div class="legend">
-                <p class="title">Status Legend</p>
-                <div class="status-container">
-                    <p class="status-text">Not Threatened</p>
-                    <div class="status-box" style="background-color: #02a028;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Naturally Uncommon</p>
-                    <div class="status-box" style="background-color: #649a31;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Relict</p>
-                    <div class="status-box" style="background-color: #99cb68;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Recovering</p>
-                    <div class="status-box" style="background-color: #fecc33;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Declining</p>
-                    <div class="status-box" style="background-color: #fe9a01;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Nationally Increasing</p>
-                    <div class="status-box" style="background-color: #c26967;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Nationally Vulnerable</p>
-                    <div class="status-box" style="background-color: #9b0000;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Nationally Endangered</p>
-                    <div class="status-box" style="background-color: #660032;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Nationally Critical</p>
-                    <div class="status-box" style="background-color: #320033;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Extinct</p>
-                    <div class="status-box" style="background-color: black;"></div>
-                </div>
-                <div class="status-container">
-                    <p class="status-text">Data Deficient</p>
-                    <div class="status-box" style="background-color: black;"></div>
-                </div>
-            </div>
+            <div id="status-legend"></div>
         </aside>
 
         <main>
@@ -86,3 +40,8 @@
 </body>
 
 </html>
+
+    <div class="status-container">
+        <p class="status-text">Not Threatened</p>
+        <div class="status-box" style="background-color: #02a028;"></div>
+    </div>

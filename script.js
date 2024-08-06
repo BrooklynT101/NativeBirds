@@ -1,5 +1,20 @@
 let birdData = []
 
+// statuses and their corrosponding colors
+const statusColors = {
+    "Not Threatened": "#02a028",
+    "Naturally Uncommon": "#649a31",
+    "Relict": "#99cb68",
+    "Recovering": "#fecc33",
+    "Declining": "#fe9a01",
+    "Nationally Increasing": "#c26967",
+    "Nationally Vulnerable": "#9b0000",
+    "Nationally Endangered": "#660032",
+    "Nationally Critical": "#320033",
+    "Extinct": "black",
+    "Data Deficient": "black"
+};
+
 async function fetchData() {
     try {
         const response = await fetch('data/nzbird.json');
@@ -40,19 +55,28 @@ function createBirdCard(bird) {
     if (bird.original_name) {
         nameDisplay = `${bird.original_name}<br>(${bird.common_name})`;
     } else {
-        nameDisplay = bird.common_name;
+        nameDisplay = `<br>${bird.common_name}<br> `;
     }
+
     // Status bar
-    const statusBar = document.createElement('div');
-    statusBar.classList.add('status-bar');
-    statusBar.style.backgroundColor = statusColors[bird.status] || 'gray'; // Default to gray if status is not found
-    card.appendChild(statusBar);
+    // const statusBar = document.createElement('div');
+    // statusBar.classList.add('status-bar');
+    // statusBar.style.backgroundColor = statusColors[bird.status] || 'gray'; // Default to gray if status is not found
+    // card.appendChild(statusBar);
+
+    //endangerment status color sourcing
+    const statusColor = statusColors[bird.status] || 'black' //default to black if theres no data
+    // console.log(nameDisplay + statusColor);
 
     // inserting the values into the card from the data
     card.innerHTML = `
         <img src="${bird.photo.source}" alt="${bird.common_name}">
         <h3>${nameDisplay}</h3>
-        <p class="status ${bird.status.toUpperCase()}">${bird.status}</p>
+        <div class="status-bar" style="background-color: ${statusColor};"></div>
+        <p>Order: ${bird.order}</p>
+        <p>Family: ${bird.family}</p>
+        <p class="size-info">Average Length: ${bird.length}</p>
+        <p class="size-info">Average Weight: ${bird.weight}</p> 
         <p class="credit">Photo by: ${bird.photo.credit}</p>
     `;
     return card;
@@ -162,6 +186,22 @@ function getStatusRank(status) {
     return statusOrder.indexOf(status);
 }
 
+function createLegend() {
+    const legendContainer = document.getElementById('status-legend');
+    legendContainer.innerHTML = ''; //clear existing content first
+
+    for (const status in statusColors) {
+        const color = statusColors[status];
+        const legendElement = document.createElement('div');
+        legendElement.classList.add('legend-element');
+
+        legendElement.innerHTML = `
+        <p class="status-label">${status}</p>
+        <div class="color-box" style="background-color: ${color};"></div>
+        `
+        legendContainer.appendChild(legendElement);
+    }
+}
 // const actions = {
 //     greeting() {
 //         console.log("Hello World!");
@@ -173,4 +213,4 @@ function getStatusRank(status) {
 // };
 
 //call fetch data function when the page loads
-window.onload = fetchData;
+window.onload = fetchData(), createLegend();
