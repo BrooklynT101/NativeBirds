@@ -76,17 +76,9 @@ footer {
 }
 
 .status-bar {
-    height: 4px;
+    height: 6px;
     border-radius: 2px;
     margin-bottom: 8px;
-}
-
-
-.title {
-    text-align: center;
-    font-weight: bolder;
-    font-size: 100%;
-    margin: 10px;
 }
 
 
@@ -122,49 +114,3 @@ footer {
     font-weight: bold;
     font-size: 75%;
 }
-
-
-/* outdated status styles - need to refactor and remove */
-/* .not-threatened {
-    background-color: #02a028;
-}
-
-.naturally-uncommon {
-    background-color: #649a31;
-}
-
-.relict {
-    background-color: #99cb68
-}
-
-.recovering {
-    background-color: #fecc33
-}
-
-.declining {
-    background-color: #fe9a01
-}
-
-.nationally-increasing {
-    background-color: #c26967
-}
-
-.nationally-vulnerable {
-    background-color: #9b0000
-}
-
-.nationally-endangered {
-    background-color: #660032
-}
-
-.nationally-critical {
-    background-color: #320033
-}
-
-.extinct {
-    background-color: black
-}
-
-.data_Deficient {
-    background-color: black
-} */

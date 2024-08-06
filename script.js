@@ -58,15 +58,8 @@ function createBirdCard(bird) {
         nameDisplay = `<br>${bird.common_name}<br> `;
     }
 
-    // Status bar
-    // const statusBar = document.createElement('div');
-    // statusBar.classList.add('status-bar');
-    // statusBar.style.backgroundColor = statusColors[bird.status] || 'gray'; // Default to gray if status is not found
-    // card.appendChild(statusBar);
-
     //endangerment status color sourcing
     const statusColor = statusColors[bird.status] || 'black' //default to black if theres no data
-    // console.log(nameDisplay + statusColor);
 
     // inserting the values into the card from the data
     card.innerHTML = `
@@ -99,12 +92,6 @@ function searchBirds() {
 
         //checks names against query and returns a true or false/falsey value
         return orgName.includes(query) || comName.includes(query) || otherNameCheck !== undefined;
-        // //check the original/common/other names of each bird against the query to see if it matchs
-        // // removes diatcritics for search then converts each to lower case for case insensitive searching
-        // removeDiacritics(bird.original_name.normalize("NFD").toLowerCase()).includes(query) || //check 
-        // removeDiacritics(bird.common_name.normalize("NFD").toLowerCase()).includes(query)
-
-        // // bird.other_name.normalize("NFC").toLowerCase().includes(query)
     });
 
     //send filtered results to display function
@@ -133,7 +120,6 @@ const sortActions = {
     //function to sort the bird by name, used common name as not all bird had a Maori eqv
     name(a, b) {
         return a.common_name.localeCompare(b.common_name);
-        // console.error("Function has not been implemented...yet");
     },
 
     //function to sort by status, defining by a status ranking system of endangerment 
@@ -144,7 +130,6 @@ const sortActions = {
 
         //compare ranks to determine the order
         return rankA - rankB;
-        // console.error("Function has not been implemented...yet");
     },
 
     weight(a, b) {
@@ -154,7 +139,6 @@ const sortActions = {
 
         //compare weights to determine the order
         return weightA - weightB;
-        // console.error("Function has not been implemented...yet");
     },
 
     length(a, b) {
@@ -164,7 +148,6 @@ const sortActions = {
 
         //compare lengths to determine the order
         return lengthA - lengthB;
-        // console.error("Function has not been implemented...yet");
     }
 };
 
@@ -202,15 +185,6 @@ function createLegend() {
         legendContainer.appendChild(legendElement);
     }
 }
-// const actions = {
-//     greeting() {
-//         console.log("Hello World!");
-//     },
-
-//     farewell() {
-//         console.log("Goodbye World!");
-//     }
-// };
 
 //call fetch data function when the page loads
 window.onload = fetchData(), createLegend();
