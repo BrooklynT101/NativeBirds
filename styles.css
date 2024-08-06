@@ -28,10 +28,11 @@ footer {
 
 .sidebar {
     background-color: #649a31;
-    padding: 1em;
-    width: 200px;
+    padding: 10px;
+    width: 250px;
 }
 
+/* bird card and container styles */
 .grid_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -45,9 +46,9 @@ footer {
     flex-flow: column;
     border: 2px solid #000000;
     border-radius: 16px;
+    padding: 15px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
     min-width: 33.3%;
 
 }
@@ -65,51 +66,66 @@ footer {
     color: #555;
 }
 
+.bird_card p {
+    font-size: 75%;
+}
+
 .bird_card .credit {
-    font-size: 0.9em;
+    font-size: 50%;
     color: #555;
 }
 
-.bird_card .status {
-    display: inline-block;
-    padding: 0.3em 0.6em;
-    border-radius: 3px;
-    font-weight: bold;
-    margin-top: 0.5em;
+.status-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 8px;
 }
 
-.legend {
-    background-color: wheat;
-    width: 105%;
-}
 
 .title {
     text-align: center;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 100%;
     margin: 10px;
 }
 
-.status-container {
+
+/* Legend related styles */
+#status-legend {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* margin: 20px 0; */
+    background-color: wheat;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #000000;
+    width: 80%;
+}
+
+.legend-element {
+    display: flex;
     align-items: center;
-    margin: 1px 0;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #000000 !important;
 }
 
-.status-text {
-    flex: 1;
-    font-size: small;
-    text-align: left;
-}
-
-.status-box {
+.color-box {
     width: 15px;
     height: 15px;
     border-radius: 4px;
-    padding-right: 15px;
+    margin-left: auto; /* Pushes the color box to the right */
+    border: 1px solid #000000;
 }
 
-.not-threatened {
+.status-label {
+    font-weight: bold;
+    font-size: 75%;
+}
+
+
+/* outdated status styles - need to refactor and remove */
+/* .not-threatened {
     background-color: #02a028;
 }
 
@@ -151,4 +167,4 @@ footer {
 
 .data_Deficient {
     background-color: black
-}
+} */
