@@ -68,7 +68,7 @@ function createBirdCard(bird) {
             <div class="credit-overlay">Credit: ${bird.photo.credit}</div>
         </div>
         <h3>${nameDisplay}</h3>
-        <div class="status-bar" style="background-color: ${statusColor};"></div>
+        <div class="status-bar" style="background-color: ${statusColor}"; title="${bird.status}";></div>
         <p>Order: ${bird.order}</p>
         <p>Family: ${bird.family}</p>
         <p class="size-info">Average Length: ${bird.length}</p>
@@ -77,12 +77,14 @@ function createBirdCard(bird) {
     return card;
 }
 
-function searchBirds() {
+function applyFilter() {
     const searchInput = document.getElementById('search');
     const query = removeDiacritics(searchInput.value.toLowerCase()); // get query and convert to lowercase for case-insensitive search
+    const sortingMetric = document.getElementById('sortByBox').value;
+    const order = document.getElementById('orderByBox').value;
 
     //loop through the birds in the data, only adding those that match the search
-    const filteredBirds = birdData.filter(bird => {
+    let filteredBirds = birdData.filter(bird => {
         //format the original and common name for case insensitivity and diacritic removal
         const orgName = removeDiacritics(bird.original_name.toLowerCase());
         const comName = removeDiacritics(bird.common_name.toLowerCase());
@@ -96,6 +98,10 @@ function searchBirds() {
         return orgName.includes(query) || comName.includes(query) || otherNameCheck !== undefined;
     });
 
+    console.log("Sorting new cards, sorting metric: ",sortingMetric,", order: ",order);
+    //sort the filtered birds by defined order
+    filteredBirds = sortBy(filteredBirds, sortingMetric, order);
+    console.log("Displaying new cards");
     //send filtered results to display function
     displayCards(filteredBirds);
 }
@@ -105,18 +111,18 @@ function removeDiacritics(name) {
     return name.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function sortBy() {
-    const metric = document.getElementById("sortByBox").value;
+function sortBy(birds, metric, order) {
     //if the action doesnt exist it should log an error and return
     if (!sortActions[metric]) {
-        console.error("Sorting function doesn't exist!");
+        console.error("Sorting function doesn't exist! Tried to sort by: ",metric);
         return;
     }
-
+    const sortedBirds = birds;
     //sort bird data based off of specified sorting metric (e.g., weight or status)
-    birdData.sort(sortActions[metric]);
-
-    displayCards(birdData);
+    sortedBirds.sort(sortActions[metric]);
+    console.log("Sorted bird array:",sortedBirds);
+    if (order === "descending") sortedBirds.reverse();
+    return sortedBirds;
 }
 
 const sortActions = {
@@ -186,7 +192,7 @@ function createLegend() {
         //inserting html
         legendElement.innerHTML = `
         <p class="status-label">${status}</p>
-        <div class="color-box" style="background-color: ${color}"; cursor: "pointer"; title="Click to apply filter" onclick="filterByStatus('${status}')"; ></div>
+        <div class="color-box" style="background-color: ${color}"; cursor: "pointer"; title="View all ${status} birds." onclick="filterByStatus('${status}')"; ></div>
         `
         //adding legend to the legend box
         legendContainer.appendChild(legendElement);

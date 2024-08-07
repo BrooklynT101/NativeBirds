@@ -1,3 +1,12 @@
+main {
+    right: 0;
+    margin-right: 0px;
+    background-image: url('data/images/deep-forest.jpeg');
+    background-size: 50%; /* Adjusts the image to cover the container */
+    
+    background-repeat: repeat; /* Prevents repeating the image */
+    background-position: center;
+}
 body {
     font-family: 'Roboto', sans-serif;
     background-color: aquamarine;
@@ -24,31 +33,81 @@ footer {
 .container {
     display: flex;
     flex: 1;
+    right: 0px;
 }
 
+/* sidebar stuff */
 .sidebar {
     background-color: #649a31;
     padding: 10px;
-    width: 250px;
+    width: 250px !important;
+    max-width: 250px !important;
 }
 
 /* Search box styles */
-.search-box {
+.filter-box {
     display: flex;
     flex-direction: column;
     background-color: rgb(239, 229, 209);
     border-radius: 16px;
     border: 1px black;
-    padding: 10px;
-    font-size: small;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    max-width: 90%;
 }
+
+.filter-box p {
+    font-size: small;
+    margin-bottom: 5px;
+}
+
+.filter-box button {
+    margin-top: 10px;
+}
+
+/* Legend related styles */
+#status-legend {
+    display: flex;
+    flex-direction: column;
+    background-color: wheat;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #000000;
+    width: 80%;
+}
+
+.legend-element {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #000000 !important;
+}
+
+.color-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+    margin-left: auto; /* Pushes the color box to the right */
+    border: 1px solid #000000;
+}
+
+.status-label {
+    font-weight: bold;
+    font-size: 75%;
+}
+
+
 
 /* bird card and container styles */
 .grid_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    padding: 16px;
+    gap: 20px;
+    padding: 15px;
+    box-sizing: border-box;
 
 }
 
@@ -60,7 +119,7 @@ footer {
     padding: 15px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-width: 33.3%;
+    min-width: 33.3% !important;
 }
 
 .image-container {
@@ -102,41 +161,10 @@ footer {
 }
 
 .status-bar {
-    height: 6px;
+    height: 8px;
     border-radius: 2px;
     margin-bottom: 8px;
 }
 
 
-/* Legend related styles */
-#status-legend {
-    display: flex;
-    flex-direction: column;
-    /* margin: 20px 0; */
-    background-color: wheat;
-    border-radius: 8px;
-    padding: 8px;
-    border: 1px solid #000000;
-    width: 80%;
-}
 
-.legend-element {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #000000 !important;
-}
-
-.color-box {
-    width: 15px;
-    height: 15px;
-    border-radius: 4px;
-    margin-left: auto; /* Pushes the color box to the right */
-    border: 1px solid #000000;
-}
-
-.status-label {
-    font-weight: bold;
-    font-size: 75%;
-}
