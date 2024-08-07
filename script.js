@@ -23,7 +23,7 @@ async function fetchData() {
         }
         const data = await response.json()  // parse to JSON
         birdData = data;
-        console.log(birdData); // use the data
+        console.log("Fetched bird data:",birdData); // use the data
         displayCards(birdData)
     } catch (error) {
         console.error('Could not fetch JSON data, error:', error)
@@ -98,10 +98,10 @@ function applyFilter() {
         return orgName.includes(query) || comName.includes(query) || otherNameCheck !== undefined;
     });
 
-    console.log("Sorting new cards, sorting metric: ",sortingMetric,", order: ",order);
+    // console.log("Sorting new cards, sorting metric: ",sortingMetric,", order: ",order);
     //sort the filtered birds by defined order
     filteredBirds = sortBy(filteredBirds, sortingMetric, order);
-    console.log("Displaying new cards");
+    // console.log("Displaying new cards");
     //send filtered results to display function
     displayCards(filteredBirds);
 }
@@ -120,7 +120,7 @@ function sortBy(birds, metric, order) {
     const sortedBirds = birds;
     //sort bird data based off of specified sorting metric (e.g., weight or status)
     sortedBirds.sort(sortActions[metric]);
-    console.log("Sorted bird array:",sortedBirds);
+    // console.log("Sorted bird array:",sortedBirds);
     if (order === "descending") sortedBirds.reverse();
     return sortedBirds;
 }
