@@ -2,11 +2,14 @@ main {
     right: 0;
     margin-right: 0px;
     background-image: url('data/images/deep-forest.jpeg');
-    background-size: 50%; /* Adjusts the image to cover the container */
-    
-    background-repeat: repeat; /* Prevents repeating the image */
+    background-size: 50%;
+    /* Adjusts the image to cover the container */
+
+    background-repeat: repeat;
+    /* Prevents repeating the image */
     background-position: center;
 }
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: aquamarine;
@@ -75,7 +78,7 @@ footer {
     border-radius: 8px;
     padding: 8px;
     border: 1px solid #000000;
-    width: 80%;
+    min-width: 90%;
 }
 
 .legend-element {
@@ -90,7 +93,8 @@ footer {
     width: 15px;
     height: 15px;
     border-radius: 4px;
-    margin-left: auto; /* Pushes the color box to the right */
+    margin-left: auto;
+    /* Pushes the color box to the right */
     border: 1px solid #000000;
 }
 
@@ -118,8 +122,14 @@ footer {
     border-radius: 16px;
     padding: 15px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 4px rgba(0, 0, 0, 0.1);
     min-width: 33.3% !important;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.bird_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .image-container {
@@ -131,8 +141,10 @@ footer {
     position: absolute;
     bottom: 0px;
     right: 0px;
-    background-color: rgba(50, 50, 50, 0.7); /* semi-trans parent grey*/
-    color: #f0f0f0; /*soft white text*/
+    background-color: rgba(50, 50, 50, 0.7);
+    /* semi-trans parent grey*/
+    color: #f0f0f0;
+    /*soft white text*/
     padding: 5px;
     font-size: 50%;
     border-top-left-radius: 5px;
@@ -165,6 +177,3 @@ footer {
     border-radius: 2px;
     margin-bottom: 8px;
 }
-
-
-
