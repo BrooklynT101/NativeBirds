@@ -23,7 +23,7 @@ async function fetchData() {
         }
         const data = await response.json()  // parse to JSON
         birdData = data;
-        console.log("Fetched bird data:",birdData); // use the data
+        console.log("Fetched bird data:", birdData); // use the data
         displayCards(birdData)
     } catch (error) {
         console.error('Could not fetch JSON data, error:', error)
@@ -114,10 +114,11 @@ function removeDiacritics(name) {
 function sortBy(birds, metric, order) {
     //if the action doesnt exist it should log an error and return
     if (!sortActions[metric]) {
-        console.error("Sorting function doesn't exist! Tried to sort by: ",metric);
+        console.error("Sorting function doesn't exist! Tried to sort by: ", metric);
         return;
     }
-    const sortedBirds = birds;
+    const sortedBirds = birds; // create new array as not to mess with the original one
+
     //sort bird data based off of specified sorting metric (e.g., weight or status)
     sortedBirds.sort(sortActions[metric]);
     // console.log("Sorted bird array:",sortedBirds);
@@ -143,8 +144,8 @@ const sortActions = {
 
     weight(a, b) {
         //get the weights to compare
-        const weightA = parseInt(a.weight, 10);
-        const weightB = parseInt(b.weight, 10);
+        const weightA = parseWeight(a.weight, 10);
+        const weightB = parseWeight(b.weight, 10);
 
         //compare weights to determine the order
         return weightA - weightB;
@@ -159,6 +160,31 @@ const sortActions = {
         return lengthA - lengthB;
     }
 };
+
+/*
+Function to add more consistency to the weight, converting units and eliminating ranges
+*/
+function parseWeight(weightString) {
+    // split the weight string from the json into parts
+    const parts = weightString.split(' ');
+    let weights = [];
+    // boolean for if the units are kg
+    let isKg = weightString.includes('kg');
+
+    //iterate over each part
+    for (let part of parts) {
+        let value = parseFloat(part);
+        if (!isNaN(value)) {
+            if (isKg) {
+                value *= 1000; // Convert kg to grams
+            }
+            weights.push(value);
+        }
+    }
+
+    //return the smallest of the weights present
+    return Math.min(...weights);
+}
 
 //function to define and return the rank of a given status, from least to most critical
 function getStatusRank(status) {
@@ -181,6 +207,7 @@ function getStatusRank(status) {
 // function to create the interactive legend
 function createLegend() {
     const legendContainer = document.getElementById('status-legend');
+    legendContainer.classList.add('legend-container'); // Add a class to the legend container
     legendContainer.innerHTML = ''; //clear existing content first
 
     //loop over every color
