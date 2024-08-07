@@ -33,9 +33,13 @@ async function fetchData() {
 function displayCards(birds) {
     // get dom
     const gridContainer = document.getElementById('bird_grid');
+    const birdCount = document.getElementById('birdCount');
 
     //clear current display
     gridContainer.innerHTML = '';
+
+    // Update bird count
+    searchCount.textContent = `Search Results: ${birds.length}`;
 
     //add birds
     birds.forEach(bird => {
