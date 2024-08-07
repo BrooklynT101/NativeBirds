@@ -1,16 +1,8 @@
-main {
-    right: 0;
-    margin-right: 0px;
-    background-image: url('data/images/deep-forest.jpeg');
-    background-size: 50%;
-    /* Adjusts the image to cover the container */
-
-    background-repeat: repeat;
-    /* Prevents repeating the image */
-    background-position: center;
-}
-
 body {
+    background-image: url('data/images/deep-forest.jpeg');
+    background-size: 100%;
+    background-repeat: repeat;
+    background-position: center;
     font-family: 'Roboto', sans-serif;
     background-color: aquamarine;
     margin: 0;
@@ -126,14 +118,14 @@ footer {
     border-radius: 16px;
     padding: 15px;
     background-color: #fff;
-    box-shadow: 0 20px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     min-width: 33.3% !important;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .bird_card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 4px rgba(0, 0, 0, 0.2);
 }
 
 .image-container {
