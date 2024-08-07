@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Native NZ Birds</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -17,20 +19,24 @@
 
     <div class="container">
         <aside class="sidebar">
-            <!-- Searching function - need to add asc & desc -->
-            <input id="search" type="text" placeholder="Search" aria-label="Search" onkeyup="searchBirds()">
-            <!-- <button onclick="sortBy('name')">Sort by Name</button>
-            <button onclick="sortBy('status')">Sort by Status</button>
-            <button onclick="sortBy('weight')">Sort by Weight</button>
-            <button onclick="sortBy('length')">Sort by Length</button> -->
-            <p>Sort by:
-                <select id="sortByBox" onchange="sortBy()">
+            <!-- Searching function - need to add asc & desc -->`
+            <div class="filter-box">
+                <p>Search:</p>
+                <input id="search" type="text" placeholder="Search" aria-label="Search">
+                <p>Sort by:</p>
+                <select id="sortByBox">
                     <option value="name">Name</option>
                     <option value="status">Status</option>
                     <option value="weight">Weight</option>
                     <option value="length">Length</option>
                 </select>
-            </p>
+                <p>Order:</p>
+                <select id="orderByBox">
+                    <option value="ascending">Ascending</option>
+                    <option value="descending">Descending</option>
+                </select>
+                <button onclick="applyFilter()">Apply Filter</button>
+            </div>
             <div id="status-legend"></div>
         </aside>
 
