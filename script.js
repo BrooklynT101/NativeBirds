@@ -264,12 +264,15 @@ function filterByStatus(status) {
     displayCards(filteredBirds);
 }
 
-function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+// added an event listener for when the DOM loads to then call the function, had some issues with it not loading 
+document.addEventListener('DOMContentLoaded', function () {
+    // add click event listenter to back to top element in DOM
+    document.getElementById('back-to-top').addEventListener('click', function () {
+        //function just scrolls user to the top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-}
+});
+
 
 
 //call fetchData and createLegend functions when the page loads
