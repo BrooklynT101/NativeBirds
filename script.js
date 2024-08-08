@@ -264,5 +264,13 @@ function filterByStatus(status) {
     displayCards(filteredBirds);
 }
 
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
 //call fetchData and createLegend functions when the page loads
 window.onload = fetchData(), createLegend();
