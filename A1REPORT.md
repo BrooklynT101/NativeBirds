@@ -1,9 +1,12 @@
 # Assignment Report
+### Brooklyn Taylor
+ID: 4308085
+Git Repo: https://altitude.otago.ac.nz/taybr713/cosc203assignment1.git
+Website: https://taybr713.cspages.otago.ac.nz/cosc203assignment1
 
-### The Report
-Include:
-- Your student ID: 4308085
-- A link to your git repository: https://altitude.otago.ac.nz/taybr713/cosc203assignment1.git
-- A link to your site: https://taybr713.cspages.otago.ac.nz/cosc203assignment1
-- A brief description of any unresolved issues:
-- A brief description of any extra features
+### Unresolved Issues
+One issue I had was the sizing of the images in the bird card, despite using **!important** tags and differing levels of *specificity* something was overriding my styling`.
+
+Another issue I had was my inability to make it look good, while I could perform the back end work well, it was the front end styling that had stumped me.
+
+### 
