@@ -21,9 +21,9 @@
         <aside class="sidebar">
             <!-- Searching function - need to add asc & desc -->`
             <div class="filter-box">
-                <p>Search:</p>
+                <p><strong>Search:</strong></p>
                 <input id="search" type="text" placeholder="Search" aria-label="Search">
-                <p>Sort by:</p>
+                <p><strong>Sort by:</strong></p>
                 <select id="sortByBox">
                     <option value="name">Name</option>
                     <option value="status">Status</option>
@@ -33,12 +33,13 @@
                     <option value="orderName">Order</option>
                     <option value="familyName">Family</option>
                 </select>
-                <p>Order:</p>
+                <p><strong>Order:</strong></p>
                 <select id="orderByBox">
                     <option value="ascending">Ascending</option>
                     <option value="descending">Descending</option>
                 </select>
                 <button onclick="applyFilter()">Apply Filter</button>
+                <p onclick="fetchData()" style="cursor: pointer;"><u>Clear Results</u></p>
                 <p id="searchCount"></p>
             </div>
             <div id="status-legend"></div>

@@ -33,7 +33,7 @@ async function fetchData() {
 function displayCards(birds) {
     // get dom
     const gridContainer = document.getElementById('bird_grid');
-    const birdCount = document.getElementById('birdCount');
+    // const birdCount = document.getElementById('birdCount');
 
     //clear current display
     gridContainer.innerHTML = '';
@@ -236,7 +236,10 @@ function getStatusRank(status) {
 function createLegend() {
     const legendContainer = document.getElementById('status-legend');
     legendContainer.classList.add('legend-container'); // Add a class to the legend container
-    legendContainer.innerHTML = ''; //clear existing content first
+    legendContainer.innerHTML = `
+    <h3 class="legend-title"><strong>Status Legend</strong></h3>
+    <p class="legend-info"><i>Click color to view birds!</i></p>
+    `; //clear existing content and add just the legend
 
     //loop over every color
     for (const status in statusColors) {
@@ -249,6 +252,7 @@ function createLegend() {
         <p class="status-label">${status}</p>
         <div class="color-box" style="background-color: ${color}"; cursor: "pointer"; title="View all ${status} birds." onclick="filterByStatus('${status}')"; ></div>
         `
+
         //adding legend to the legend box
         legendContainer.appendChild(legendElement);
     }
