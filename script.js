@@ -72,7 +72,9 @@ function createBirdCard(bird) {
             <div class="credit-overlay">Credit: ${bird.photo.credit}</div>
         </div>
         <h3>${nameDisplay}</h3>
-        <div class="status-bar" style="background-color: ${statusColor}"; title="${bird.status}";></div>
+        <div class="status-bar" style="background-color: ${statusColor}"; title="${bird.status}";>
+            <span class="status-text"><b>${bird.status}</b></span>
+        </div>
         <p><strong>Scientific Name:</strong> ${bird.scientific_name}</p>
         <p><strong>Order:</strong> ${bird.order}</p>
         <p><strong>Family:</strong> ${bird.family}</p>
