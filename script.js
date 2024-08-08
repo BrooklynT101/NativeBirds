@@ -73,10 +73,11 @@ function createBirdCard(bird) {
         </div>
         <h3>${nameDisplay}</h3>
         <div class="status-bar" style="background-color: ${statusColor}"; title="${bird.status}";></div>
-        <p>Order: ${bird.order}</p>
-        <p>Family: ${bird.family}</p>
-        <p class="size-info">Average Length: ${bird.length}</p>
-        <p class="size-info">Average Weight: ${bird.weight}</p> 
+        <p><strong>Scientific Name:</strong> ${bird.scientific_name}</p>
+        <p><strong>Order:</strong> ${bird.order}</p>
+        <p><strong>Family:</strong> ${bird.family}</p>
+        <p class="size-info"><strong>Average Length:</strong> ${bird.length}</p>
+        <p class="size-info"><strong>Average Weight:</strong> ${bird.weight}</p> 
     `;
     return card;
 }
@@ -89,9 +90,17 @@ function applyFilter() {
 
     //loop through the birds in the data, only adding those that match the search
     let filteredBirds = birdData.filter(bird => {
-        //format the original and common name for case insensitivity and diacritic removal
-        const orgName = removeDiacritics(bird.original_name.toLowerCase());
-        const comName = removeDiacritics(bird.common_name.toLowerCase());
+        //create an array for the bird names
+        let birdNames = [];
+        //format and add the various names for case insensitivity and diacritic removal
+        birdNames.push(removeDiacritics(bird.original_name.toLowerCase()));
+        birdNames.push(removeDiacritics(bird.common_name.toLowerCase()));
+        birdNames.push(removeDiacritics(bird.scientific_name.toLowerCase()));
+        birdNames.push(removeDiacritics(bird.order.toLowerCase()));
+        birdNames.push(removeDiacritics(bird.family.toLowerCase()));
+
+        // check if any name matches the query
+        const nameCheck = birdNames.some(name => name.includes(query));
 
         //loop through the other names to find a match, assigning a check variable for truthy/falsey returns
         const otherNameCheck = bird.other_name.find(name =>
@@ -99,13 +108,11 @@ function applyFilter() {
         );
 
         //checks names against query and returns a true or false/falsey value
-        return orgName.includes(query) || comName.includes(query) || otherNameCheck !== undefined;
+        return nameCheck || otherNameCheck !== undefined;
     });
 
-    // console.log("Sorting new cards, sorting metric: ",sortingMetric,", order: ",order);
     //sort the filtered birds by defined order
     filteredBirds = sortBy(filteredBirds, sortingMetric, order);
-    // console.log("Displaying new cards");
     //send filtered results to display function
     displayCards(filteredBirds);
 }
@@ -134,6 +141,21 @@ const sortActions = {
     //function to sort the bird by name, used common name as not all bird had a Maori eqv
     name(a, b) {
         return a.common_name.localeCompare(b.common_name);
+    },
+
+    //function to sort the bird by scientific_name
+    scientificName(a, b) {
+        return a.scientific_name.localeCompare(b.scientific_name);
+    },
+
+    //function to sort the bird by name, used common name as not all bird had a Maori eqv
+    orderName(a, b) {
+        return a.order.localeCompare(b.order);
+    },
+
+    //function to sort the bird by name, used common name as not all bird had a Maori eqv
+    familyName(a, b) {
+        return a.family.localeCompare(b.family);
     },
 
     //function to sort by status, defining by a status ranking system of endangerment 
