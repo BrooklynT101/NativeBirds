@@ -2,7 +2,7 @@
 ### Brooklyn Taylor
 *ID: 4308085*
 - Altitude Repo: https://altitude.otago.ac.nz/taybr713/cosc203assignment1.git
-- GitBucket Repo (see Note)
+- GitBucket Repo (see Note): https://isgb.otago.ac.nz/info202/git/taybr713/COSC203_A1.git
 - Website: https://taybr713.cspages.otago.ac.nz/cosc203assignment1
 
 ### Unresolved Issues
@@ -26,4 +26,6 @@ Note these "features" are more quality of life improvements than actual exciting
 ## Note
 You might notice a discrepancy between the number of issues and the references to issues in the commits. This happened because I was initially pushing my work to the INFO202 GitBucket repository instead of the Altitude repository. I later cloned and pushed the GitBucket repository to Altitude, which preserved all my commits and commit messages, but unfortunately, it didn’t transfer the referenced issues.
 
-If you’d like to review the issues, please contact me for access.
+If you’d like to review the issues, I've linked the GitBucket repository for the issues. 
+
+`Please note that the GitBucket Repository should only be viewed for the prior issues as the website is outdated compared to the Altitude hosted site`
